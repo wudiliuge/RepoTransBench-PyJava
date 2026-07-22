@@ -1,0 +1,39 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Python
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Local runs and exports
+/logs/
+/results/
+/translated_projects/
+/generated-results/
+/run-records/
+/exports/
+/RepoTransBench-exports/
+
+# Dataset downloads
+/RepoTransBench-dataset-cache/
+/RepoTransBench-dataset/
+projects.tar.gz
+python-java-dataset.tar.gz
+
+# Build output
+**/target/
+**/.gradle/
+
+# Editors and Windows
+.idea/
+.vscode/
+*.iml
+Thumbs.db
+Desktop.ini

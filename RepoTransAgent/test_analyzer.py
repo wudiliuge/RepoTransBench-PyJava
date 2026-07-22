@@ -181,8 +181,13 @@ class JavaTestAnalyzer(BaseTestAnalyzer):
     
     def analyze_output(self, stdout: str, stderr: str, return_code: int) -> AnalysisResult:
         # Check compilation
-        compilation_success = "BUILD SUCCESS" in stdout or "BUILD SUCCESSFUL" in stdout
         compile_errors = stdout.count("COMPILATION ERROR") + stderr.count("error:")
+        tests_started = bool(re.search(r'Tests run:\s*\d+', stdout))
+        compilation_success = (
+            "BUILD SUCCESS" in stdout
+            or "BUILD SUCCESSFUL" in stdout
+            or (tests_started and compile_errors == 0)
+        )
         
         compilation = CompilationResult(
             success=compilation_success,
@@ -228,6 +233,15 @@ class JavaTestAnalyzer(BaseTestAnalyzer):
         failed = sum(1 for t in tests if t.status == 'failed')
         error = sum(1 for t in tests if t.status == 'error')
         skipped = sum(1 for t in tests if t.status == 'skipped')
+
+        # Maven Surefire prints aggregate counts instead of per-test statuses.
+        maven_summaries = re.findall(
+            r'Tests run:\s*(\d+),\s*Failures:\s*(\d+),\s*Errors:\s*(\d+),\s*Skipped:\s*(\d+)',
+            stdout
+        )
+        if maven_summaries:
+            total, failed, error, skipped = map(int, maven_summaries[-1])
+            passed = total - failed - error - skipped
         
         return AnalysisResult(
             compilation=compilation,

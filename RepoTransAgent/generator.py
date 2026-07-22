@@ -32,24 +32,27 @@ class Generator:
         self.init_conversation()
 
     def load_config(self):
-        with open(f'RepoTransAgent/{self.config_file}', encoding='utf-8') as f:
-            api_keys = f.readlines()
-        api_keys = [line.split()[1].strip() for line in api_keys]
-        self.api_keys = cycle(api_keys)
+        env_key = os.getenv("LLM_API_KEY") or os.getenv("OPENAI_API_KEY")
+        if env_key:
+            api_keys = [env_key]
+        else:
+            config_path = f"RepoTransAgent/{self.config_file}"
+            with open(config_path, encoding="utf-8") as f:
+                lines = [line.strip() for line in f if line.strip()]
+            api_keys = [line.split(maxsplit=1)[-1] for line in lines]
 
+        if not api_keys:
+            raise RuntimeError(
+                "No API key configured. Set LLM_API_KEY or OPENAI_API_KEY."
+            )
+
+        self.api_keys = cycle(api_keys)
         self.api_key = next(self.api_keys)
-        self.base_url = "https://api.gptoai.top"
-        # self.base_url = "https://35.aigcbest.top"
-        # self.base_url = "https://api.minimaxi.com/v1/text/chatcompletion_v2"
-        # self.base_url = 'https://www.gptapi.us'
-        # self.base_url = 'https://api.siliconflow.cn'
-        # self.base_url = 'https://api.just2chat.cn'
-        # self.base_url = 'https://www.chataiapi.com'
-        self.base_url = 'https://c.bt6.top'
-        # self.base_url = 'https://okapi.aicohere.org'
-        # self.base_url = 'https://api.agicto.cn'
-        # self.base_url = 'https://www.chataiapi.com'
-        # self.base_url = 'https://claude.aisonnet.org'
+        self.base_url = (
+            os.getenv("LLM_BASE_URL")
+            or os.getenv("OPENAI_BASE_URL")
+            or "https://api.openai.com"
+        ).rstrip("/")
         self.log_path = "conversation_logs/logs.json"
 
     def init_conversation(self, repo_path=None):
@@ -90,7 +93,7 @@ class Generator:
             retry_cnt = 0
             while True:
                 try:
-                    self.logger.info(f"Using key: {self.api_key}")
+                    self.logger.info("Using configured API key: ***")
                     self.logger.info(f"Using base url: {self.base_url}")
                     headers = {
                         'Accept': 'application/json',
@@ -149,13 +152,17 @@ class Generator:
             return content
 
     def record_conversation(self, headers, model_name, messages, response, repo_name=None):
+        safe_headers = dict(headers)
+        if "Authorization" in safe_headers:
+            safe_headers["Authorization"] = "Bearer ***"
+
         log_path = self.log_path
         os.makedirs('conversation_logs', exist_ok=True)
         if repo_name:
             log_path = f'conversation_logs/{repo_name}.json'
 
         conversation_data = {
-            "headers": headers,
+            "headers": safe_headers,
             "model_name": model_name,
             "messages": messages,
             "response": response,

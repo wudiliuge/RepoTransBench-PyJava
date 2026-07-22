@@ -4,6 +4,30 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-green.svg)](https://python.org)
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red.svg)](https://arxiv.org/pdf/2412.17744)
 
+<!-- PYJAVA_WINDOWS_START -->
+## Windows Python→Java quick start
+
+Windows users can prepare the 169 runnable Python→Java tasks and run one project through Docker Desktop:
+
+```powershell
+# One-time setup
+powershell -ExecutionPolicy Bypass -File ".\scripts\setup_windows.ps1"
+
+# Run one project
+.\scripts\run_single.ps1 `
+  -ProjectName "OilerNetwork_fossil_cairo0" `
+  -ModelName "deepseek-v4-flash" `
+  -MaxIterations 20
+
+# Export all generated projects and logs to Windows
+.\scripts\export_run.ps1 -Mode Results
+```
+
+When prompted with `Enter DeepSeek API Key`, enter the real API key directly. Do not save it in the repository.
+
+See [docs/WINDOWS_PYJAVA.md](docs/WINDOWS_PYJAVA.md) for installation, initialization, result locations and troubleshooting.
+<!-- PYJAVA_WINDOWS_END -->
+
 ## 📖 Overview
 
 **RepoTransBench** is a comprehensive repository-level code translation benchmark featuring **1,897 real-world repository samples** across **13 language pairs** with automatically executable test suites. Unlike previous fine-grained benchmarks that focus on snippets, functions, or files, RepoTransBench addresses real-world demands where entire repositories need translation.
