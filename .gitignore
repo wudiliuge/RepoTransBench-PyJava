@@ -37,3 +37,5 @@ python-java-dataset.tar.gz
 *.iml
 Thumbs.db
 Desktop.ini
+/body.json
+/metrics_install_backups/

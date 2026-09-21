@@ -1,6 +1,7 @@
 # file path: RepoTransAgent/run.py
 
 import argparse
+import json
 import logging
 import os
 import re
@@ -34,6 +35,7 @@ class ReactTranslationAgent:
         self.target_language = args.target_language
         self.max_iterations = args.max_iterations
         self.current_iteration = 0
+        self.run_metrics_path = os.getenv("RTB_AGENT_RUN_METRICS")
         
         # Set up paths
         self.working_path = Path(f"/workspace/translated_projects/{self.model_name.replace('/', '_')}/{self.source_language}/{self.target_language}/{self.project_name}").resolve()
@@ -78,6 +80,21 @@ class ReactTranslationAgent:
             f.write("=" * 80 + "\n\n")
             f.write(self.system_prompt)
         logger.info(f"💾 System prompt saved to: {system_prompt_file}")
+
+    def save_run_metrics(self, status: str):
+        """Persist machine-readable iteration progress for the metrics runner."""
+        if not self.run_metrics_path:
+            return
+        path = Path(self.run_metrics_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        temporary = path.with_suffix(path.suffix + '.tmp')
+        temporary.write_text(json.dumps({
+            'project': self.project_name,
+            'max_iterations': self.max_iterations,
+            'actual_iterations': self.current_iteration,
+            'status': status,
+        }, ensure_ascii=False, indent=2), encoding='utf-8')
+        temporary.replace(path)
 
     def parse_action(self, output: str) -> Optional[Action]:
         """Parse action from model output"""
@@ -346,6 +363,7 @@ class ReactTranslationAgent:
 
     def save_final_summary(self, status: str):
         """Save final summary of the translation process"""
+        self.save_run_metrics(status)
         summary_file = self.log_dir / "final_summary.txt"
         
         # Get final test analysis
@@ -425,10 +443,12 @@ Start by creating the main implementation files based on what you see in the sou
 
         current_obs = initial_task
         done = False
+        self.save_run_metrics('running')
         
         try:
             while not done and self.current_iteration < self.max_iterations:
                 self.current_iteration += 1
+                self.save_run_metrics('running')
                 logger.info(f"=== Iteration {self.current_iteration}/{self.max_iterations} ===")
                 
                 # Predict next action

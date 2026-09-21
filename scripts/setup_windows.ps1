@@ -240,12 +240,12 @@ if (-not $subsetReady) {
         -Path "target_projects/projects_summary.jsonl"
 
     if (-not $rawReady) {
-        $rawIsEmptyArgs = @(
-            "run", "--rm",
-            "--mount", "type=volume,source=$RawVolume,target=/raw",
-            "alpine:3.22",
-            "sh", "-c", 'test -z "$(find /raw -mindepth 1 -maxdepth 1 -print -quit)"'
-        )
+     	$rawIsEmptyArgs = @(
+   	 "run", "--rm",
+   	 "--mount", "type=volume,source=$RawVolume,target=/raw",
+    	"alpine:3.22",
+   	 "sh", "-c", "find /raw -mindepth 1 -maxdepth 1 -print -quit | grep -q . && exit 1 || exit 0"
+	)
         Invoke-NativeCommand `
             -FilePath $dockerCli `
             -Arguments $rawIsEmptyArgs `

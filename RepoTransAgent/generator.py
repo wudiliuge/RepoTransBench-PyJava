@@ -6,6 +6,7 @@ import os
 import time
 import func_timeout
 import requests
+from rtb_metrics.telemetry import request_json
 from itertools import cycle
 from func_timeout import func_set_timeout
 # from RepoTransAgent.prompts.system_prompts import get_test_translation_prompt_for_target_language
@@ -87,7 +88,7 @@ class Generator:
                 "model": self.model_name,
                 "messages": self.messages,
                 # "max_tokens": 5,
-                # "reasoning_effort": "low",
+                "reasoning_effort": "low",
             }
 
             retry_cnt = 0
@@ -106,7 +107,7 @@ class Generator:
                     # pprint(data['messages'])
                     # exit()
                     # print(headers)
-                    response = requests.post(f"{self.base_url}/v1/chat/completions", json=data, headers=headers, timeout=180).json()
+                    response = request_json(requests.post, f"{self.base_url}/v1/chat/completions", json=data, headers=headers, timeout=180)
                     # response = requests.post(f"{self.base_url}", json=data, headers=headers, timeout=180).json()
                     # print(response)
                     # exit()

@@ -1,0 +1,270 @@
+{
+  "clarkduvall_serpy": {
+    "tests": {
+      "com.example.original.TestFields": [
+        "test_str_field",
+        "test_int_field",
+        "test_float_field",
+        "test_bool_field",
+        "test_method_field"
+      ],
+      "com.example.original.TestIntegrationSerpySerializer": [
+        "test_simple_serialization",
+        "test_method_and_custom_labels",
+        "test_dict_serializer",
+        "test_edge_cases_and_repr"
+      ],
+      "com.example.original.TestSerializer": [
+        "test_label_field",
+        "test_serializer_to_value",
+        "test_missing_attr"
+      ],
+      "com.example.public_tests.PublicTestFields": [
+        "test_str_field",
+        "test_int_field",
+        "test_method_field",
+        "test_missing_value_field"
+      ],
+      "com.example.public_tests.PublicTestIntegration": [
+        "test_all_fields",
+        "test_missing_field",
+        "test_list_many"
+      ],
+      "com.example.public_tests.PublicTestSerializer": [
+        "test_serializer_basic",
+        "test_serializer_many",
+        "test_method_serializer",
+        "test_method_serializer_many"
+      ]
+    },
+    "module_map": {},
+    "java_sha256": {
+      "src/test/java/com/example/original/TestFields.java": "7b1705ebadb1d305d9cf33c1df96e5b11324e7ac1aa5319c9a2c2bfa29737e51",
+      "src/test/java/com/example/original/TestIntegrationSerpySerializer.java": "f1d845d92408af0152aaf5f267dfb89347fef8dae606ef233b15683e44d45463",
+      "src/test/java/com/example/original/TestSerializer.java": "8b4ebc914b720e50ad7040af580b0e86562e88cd0bad19285884d74bc13adac6",
+      "src/test/java/com/example/public_tests/PublicTestFields.java": "19cbc240796ecf16b8c7c0abf8d25104319b919e27a95a8173a13b325e2fd0f8",
+      "src/test/java/com/example/public_tests/PublicTestIntegration.java": "4549386639202b04dd8baf3a0db136e8aa3d450dc321abf12d58389900d5c732",
+      "src/test/java/com/example/public_tests/PublicTestSerializer.java": "404d5f3d0c1c1ff75632fe24f2d33cbcb6b2e46d3f1c19f0c34fd05864b81b4c"
+    }
+  },
+  "softvar_json2html": {
+    "tests": {
+      "com.example.original.Json2HtmlAdditionalTest": [
+        "testEmptyList",
+        "testNullInput",
+        "testListOfMixedTypes",
+        "testXssInjection"
+      ],
+      "com.example.original.Json2HtmlClassicPyUnittestTest": [
+        "testOnlyOneLevel",
+        "testListAsDictionaryValue",
+        "testComplicatedNesting"
+      ],
+      "com.example.original.Json2HtmlCoreTest": [
+        "testEmptyDict",
+        "testBasicMapping",
+        "testListOfPrimitives",
+        "testNestedDict",
+        "testArrayOfDictsClubbing"
+      ],
+      "com.example.public_tests.PublicJson2HtmlAdditionalTest": [
+        "testDeepNesting",
+        "testListOfDictsHeaders"
+      ],
+      "com.example.public_tests.PublicJson2HtmlCoreTest": [
+        "testBasicTypes",
+        "testListUnordered",
+        "testNestedTable"
+      ]
+    },
+    "module_map": {},
+    "java_sha256": {
+      "src/test/java/com/example/original/Json2HtmlAdditionalTest.java": "00578226a4c9158120c3a4b7606f46bd25781aae8a046b6a4c5313b3e79f4bfb",
+      "src/test/java/com/example/original/Json2HtmlClassicPyUnittestTest.java": "ba807adbb093ae200a3547ac721a3429f24cc15e56d7e4f00b3043fb104033a5",
+      "src/test/java/com/example/original/Json2HtmlCoreTest.java": "6afbb4be93c1bf176b9d16ea8edbc4b18fe80f8dd5b4214fa506888048b6e1bc",
+      "src/test/java/com/example/original/RunTestsJson2HtmlTest.java": "1197f8376ab5e2a21bef7b79f3753623231068a3325e2fdbbe3183be8a857409",
+      "src/test/java/com/example/public_tests/PublicJson2HtmlAdditionalTest.java": "ab4dd149812b82e101766e9bcbd032d7885523ff1801fb8032ffe9a6a1a7c2e2",
+      "src/test/java/com/example/public_tests/PublicJson2HtmlCoreTest.java": "8915922d91ed7fc750ffe2e90bc835b8ff2423c7ff657f361a9dbc3a56ca6b71"
+    }
+  },
+  "tadeck_onetimepass": {
+    "tests": {
+      "com.tadeck.onetimepass.original.OnetimepassCoreTest": [
+        "testIsPossibleTokenAcceptsValidAndInvalid",
+        "testGetHotpTokenLengthAndInvalidSecret",
+        "testGetHotpCasefoldFalse",
+        "testTotpDefault",
+        "testValidHotpAndLast",
+        "testGetTotpTokenLengthAndString",
+        "testValidTotpAndWindow",
+        "testGetTotpFixedTime"
+      ],
+      "com.tadeck.onetimepass.original.OnetimepassExtraTest": [
+        "testGetHotpInvalidSecretType",
+        "testGetHotpIncorrectBase32",
+        "testGetHotpCustomDigest",
+        "testGetHotpStringTypes",
+        "testValidHotpReturnsFalse",
+        "testValidHotpWithRange",
+        "testValidTotpFalse",
+        "testGetTotpAndValidTotp",
+        "testGetTotpCustomTokenLength"
+      ],
+      "com.tadeck.onetimepass.publictests.PublicOnetimepassCoreTest": [
+        "testGetTotp",
+        "testValidTotpToken",
+        "testInvalidTotpToken",
+        "testGetHotp",
+        "testValidHotpTrue",
+        "testValidHotpFalse"
+      ],
+      "com.tadeck.onetimepass.publictests.PublicOnetimepassExtraTest": [
+        "testSecretToBase32",
+        "testValidBase32ReturnTypes",
+        "testGenerateNewSecretLength",
+        "testGenerateNewSecretBase32"
+      ]
+    },
+    "module_map": {},
+    "java_sha256": {
+      "src/test/java/com/tadeck/onetimepass/original/OnetimepassCoreTest.java": "a0469ebef87e67403f86631ba727d13a5f3a09c79b4496e6dd8614eea847a0f5",
+      "src/test/java/com/tadeck/onetimepass/original/OnetimepassExtraTest.java": "66151802d58a09ffc648558abba0748632f504a682775bde32886e85e1c31bc6",
+      "src/test/java/com/tadeck/onetimepass/publictests/PublicOnetimepassCoreTest.java": "2b61d65760be7f8ff345fa0b6aa6b6e4e7a52e9790d7a67661dca3ee7bcf4b49",
+      "src/test/java/com/tadeck/onetimepass/publictests/PublicOnetimepassExtraTest.java": "1b1f5ee6a017073e1a89445bc3d8a9044573b1853c03c67003abc0c7ec22c7f8"
+    }
+  },
+  "thomasa88_ParametricText": {
+    "tests": {
+      "com.thomasa88.original.TestParamFormatter": [
+        "testUnitlessPositive",
+        "testUnitlessNegative",
+        "testUnitInch",
+        "testWholeNumber",
+        "testFractionOnly",
+        "testZero"
+      ],
+      "com.thomasa88.original.TestParamSpec": [
+        "testFromStringBasic",
+        "testFromStringWithMember",
+        "testFromStringWithSlice",
+        "testFromStringWithFormat",
+        "testFromStringInvalid",
+        "testEq",
+        "testNullint"
+      ],
+      "com.thomasa88.original.TestParser": [
+        "testSplitParam",
+        "testSliceParsing",
+        "testSplitExampleStrings",
+        "testBadParamString"
+      ],
+      "com.thomasa88.public_tests.PublicParamFormatterTest": [
+        "testMixedFracInchWholeNumber",
+        "testMixedFracInchSimpleFraction",
+        "testMixedFracInchMixed",
+        "testMixedFracInchExactHalf",
+        "testMixedFracInchZero"
+      ],
+      "com.thomasa88.public_tests.PublicParamParserTest": [
+        "testParamSpecBasic",
+        "testParamSpecStr",
+        "testParamSpecEq"
+      ],
+      "com.thomasa88.public_tests.PublicParserTest": [
+        "testParamSpecNameValue",
+        "testParamSpecStrAndEq"
+      ]
+    },
+    "module_map": {},
+    "java_sha256": {
+      "src/test/java/com/thomasa88/original/TestParamFormatter.java": "e6f016c4cfd65243f90b88707336b51136b831e0d386d687c302a03bb9d59de5",
+      "src/test/java/com/thomasa88/original/TestParamSpec.java": "756231a41638e91ea4aa3e2163411ca5a2f2f3aff294b4ece20748965a062790",
+      "src/test/java/com/thomasa88/original/TestParser.java": "39847cc5bc01ad71f52e8e169d64e019e156ae1ce888d8bd98b91017a2c1e340",
+      "src/test/java/com/thomasa88/public_tests/PublicParamFormatterTest.java": "84384adaa674ad79c232da1977aed1549a8f85cffea08af905221cd7e682f93c",
+      "src/test/java/com/thomasa88/public_tests/PublicParamParserTest.java": "08177ccb6448a885b741f4355ade93fcc303f7365b43a2a527c19902e84e4021",
+      "src/test/java/com/thomasa88/public_tests/PublicParserTest.java": "f7d8feca8f39d5e0d0023c8a61c218fda83bec67c048bc5e54d934aa0067745c"
+    }
+  },
+  "VerbalExpressions_PythonVerbalExpressions": {
+    "tests": {
+      "com.example.verbalexpressions.original.VerExExtraTest": [
+        "testAnything",
+        "testAnythingBut",
+        "testEndOfLine",
+        "testMaybe",
+        "testStartOfLine",
+        "testFindAndThen",
+        "testAnyAnyOf",
+        "testLineBreakBr",
+        "testRangeWithOddArgs",
+        "testTabAndWord",
+        "testOrWithoutValue",
+        "testOrWithValue",
+        "testReplace",
+        "testWithAnyCase",
+        "testSearchOneLine",
+        "testWithAscii",
+        "testValueAndSource"
+      ],
+      "com.example.verbalexpressions.original.VerExTest": [
+        "testShouldRenderVerexAsString",
+        "testShouldRenderVerexListAsString",
+        "testShouldMatchCharactersInRange",
+        "testShouldNotMatchCharactersOutsideOfRange",
+        "testShouldMatchCharactersInExtendedRange",
+        "testShouldNotMatchCharactersOutsideOfExtendedRange",
+        "testShouldMatchStartOfLine",
+        "testShouldMatchEndOfLine",
+        "testShouldMatchAnything",
+        "testShouldMatchAnythingButSpecifiedElementWhenElementIsNotFound",
+        "testShouldNotMatchAnythingButSpecifiedElementWhenSpecifiedElementIsFound",
+        "testShouldFindElement",
+        "testShouldNotFindMissingElement",
+        "testShouldMatchWhenMaybeElementIsPresent",
+        "testShouldMatchWhenMaybeElementIsMissing",
+        "testShouldMatchOnAnyWhenElementIsFound",
+        "testShouldNotMatchOnAnyWhenElementIsNotFound",
+        "testShouldMatchWhenLineBreakPresent",
+        "testShouldMatchWhenLineBreakAndCarriageReturnPresent",
+        "testShouldNotMatchWhenLineBreakIsMissing",
+        "testShouldMatchWhenTabPresent",
+        "testShouldNotMatchWhenTabIsMissing",
+        "testShouldMatchWhenWordPresent",
+        "testNotMatchWhenTwoWordsArePresentInsteadOfOne",
+        "testShouldMatchWhenOrConditionFulfilled",
+        "testShouldNotMatchWhenOrConditionNotFulfilled",
+        "testShouldMatchOnUpperCaseWhenLowerCaseIsGivenAndAnyCaseIsTrue",
+        "testShouldMatchMultipleLines",
+        "testShouldMatchEmailAddress",
+        "testShouldMatchUrl"
+      ],
+      "com.example.verbalexpressions.public_tests.PublicVerExExtraTest": [
+        "testReEscapePublic",
+        "testVerexComplexPatternPublic",
+        "testVerexAnythingButPublic",
+        "testVerexRangePublic",
+        "testVerexMultipleOperatorsPublic",
+        "testVerexAnyPublic",
+        "testVerexMatchPublic",
+        "testVerexReplacePublic"
+      ],
+      "com.example.verbalexpressions.public_tests.PublicVerExTest": [
+        "testPublicStartOfLine",
+        "testPublicAnything",
+        "testPublicAnythingBut",
+        "testPublicEndOfLine",
+        "testPublicMaybe",
+        "testPublicAnyOf",
+        "testPublicNotOf",
+        "testPublicReplace"
+      ]
+    },
+    "module_map": {},
+    "java_sha256": {
+      "src/test/java/com/example/verbalexpressions/original/VerExExtraTest.java": "eec509f19fc8442e3f1081c87a2295861a611e1cd897551c4d5225fb0a025af6",
+      "src/test/java/com/example/verbalexpressions/original/VerExTest.java": "7b1c4281e4f18550e54adf975cb6284dd10da307a61451246b09eb54da5ef5ca",
+      "src/test/java/com/example/verbalexpressions/public_tests/PublicVerExExtraTest.java": "4b9291bc3c89f632aadcdb7102b1ba5055f2316aee4c6180155a581ad173d790",
+      "src/test/java/com/example/verbalexpressions/public_tests/PublicVerExTest.java": "5a2041d2c1b53d7ea0b0e459c6ae5594fd98945ace7b45460039ed45cacf01e9"
+    }
+  }
+}
